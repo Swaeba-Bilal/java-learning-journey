@@ -12,6 +12,11 @@ A simple Java console-based application to help travelers:
 ✔ Input validation with user-friendly messages  
 ✔ Interactive command-line interface  
 ✔ Exception handling for incorrect date formats
+## 🛠 Requirements
+
+- Java 8 or higher
+- Command-line interface (e.g., Terminal, Command Prompt)
+
 ## 🚀 How to Run
 Compile the program:
 javac TravelPlanner.java
