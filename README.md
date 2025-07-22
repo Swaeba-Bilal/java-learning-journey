@@ -1,5 +1,5 @@
 # Java Learning Journey 🚀
-
+[![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white)](https://www.oracle.com/java/)
 Welcome to my **Java Learning Journey**!  
 This repository showcases the **practice projects** I completed while learning Java through the **Coursera Java Programming and Software Engineering Fundamentals** course.
 
@@ -45,5 +45,7 @@ They demonstrate core Java concepts, clean code practices, and simple problem-so
 3. Example:
    javac MoodTracker.java
    java MoodTracker
+
+   
   **📜 License**
 This repository is licensed under the Apache License 2.0. See the LICENSE file for details.
