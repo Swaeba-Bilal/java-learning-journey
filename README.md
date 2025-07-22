@@ -21,8 +21,6 @@ An OOP-based project modeling geometric shapes using inheritance and polymorphis
 - ✈️**Travel Planner**
 - A console-based travel planning tool where users can add trips, destinations, and calculate durations using Java’s **LocalDate**, **ChronoUnit**, and **date validation**.
 
-- 
-
 ---
 
 ## 🛠 Technologies Used
