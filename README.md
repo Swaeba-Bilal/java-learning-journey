@@ -18,13 +18,17 @@ A console-based system to manage books in a library. Features include add, searc
 
 ### 🔹 [Shape Project](./ShapeProject)
 An OOP-based project modeling geometric shapes using inheritance and polymorphism.
+- ✈️**Travel Planner**
+- A console-based travel planning tool where users can add trips, destinations, and calculate durations using Java’s **LocalDate**, **ChronoUnit**, and **date validation**.
+
+- 
 
 ---
 
 ## 🛠 Technologies Used
 - Java SE
 - Object-Oriented Programming (OOP)
-- File Handling
+- Java I/O & File Handling
 - Interfaces & Abstract Classes
 - Packages and Modular Design
 - Console-Based Applications
