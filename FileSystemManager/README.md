@@ -38,15 +38,6 @@ Run:
 java FileSystemManage
 
 
-📸 Sample Usage
-/home/user/JavaProjects/FileSystemManager> ls
-Type | Size (bytes) | Last Modified       | Name
--------------------------------------------------
- d   |         4096 | 2025-07-23 11:15:00 | myFolder
- -   |           58 | 2025-07-23 11:16:45 | notes.txt
-
-/home/user/JavaProjects/FileSystemManager> cd myFolder
-/home/user/JavaProjects/FileSystemManager/myFolder> touch demo.txt
 **✅ Requirements**
 Java 8 or later
 
