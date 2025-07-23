@@ -20,8 +20,14 @@ A console-based system to manage books in a library. Features include add, searc
 An OOP-based project modeling geometric shapes using inheritance and polymorphism.
 
 ### 🔹 Travel Planner
----
+
 A console-based Java program for planning trips using dates and durations with LocalDate and ChronoUnit.
+### 🔹 FileSystemManager  
+A console-based file manager that mimics basic shell commands like `ls`, `cd`, `mkdir`, `touch`, `rm`, `rename`, and more.  
+It uses Java File I/O, OOP, and command parsing to interact with the file system.
+
+📁 Folder: `FileSystemManager`
+📄 Main File: `FileSystemManager.java`
 
 
 ## 🛠 Technologies Used
