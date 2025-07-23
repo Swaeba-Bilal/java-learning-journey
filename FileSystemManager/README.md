@@ -1,6 +1,7 @@
-📁 FileSystemManager
+**📁 FileSystemManager**
 A Java-based command-line file management tool that mimics basic shell operations such as listing files, navigating directories, creating/deleting files and folders, renaming, and more.
-🎯 Features
+
+**🎯 Features**
 
 ls – List all files and directories with details (type, size, modified date)
 
@@ -22,7 +23,7 @@ info <name> – Show detailed metadata about a file or directory
 
 exit – Exit the program
 
-🛠 Technologies Used
+**🛠 Technologies Used**
 Java java.io.File
 
 Java Scanner for user input
@@ -35,6 +36,8 @@ Compile:
 javac FileSystemManager.java
 Run:
 java FileSystemManage
+
+
 📸 Sample Usage
 /home/user/JavaProjects/FileSystemManager> ls
 Type | Size (bytes) | Last Modified       | Name
@@ -44,7 +47,7 @@ Type | Size (bytes) | Last Modified       | Name
 
 /home/user/JavaProjects/FileSystemManager> cd myFolder
 /home/user/JavaProjects/FileSystemManager/myFolder> touch demo.txt
-✅ Requirements
+**✅ Requirements**
 Java 8 or later
 
 Terminal/Command prompt
