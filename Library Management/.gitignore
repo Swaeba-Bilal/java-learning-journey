@@ -1,0 +1,16 @@
+# Ignore compiled Java files
+*.class
+
+# Ignore system files
+Thumbs.db
+.DS_Store
+
+# Ignore temporary/backup files
+*.tmp
+*.bak
+
+# Ignore build/output directories (if used in future)
+bin/
+build/
+out/
+
