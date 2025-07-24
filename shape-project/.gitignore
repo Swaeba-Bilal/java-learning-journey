@@ -1,0 +1,16 @@
+# Ignore class files
+*.class
+
+# Ignore package files
+*.jar
+*.war
+*.ear
+
+# Ignore IDE configs
+/.idea/
+/*.iml
+*.log
+
+# Ignore OS generated files
+.DS_Store
+Thumbs.db
