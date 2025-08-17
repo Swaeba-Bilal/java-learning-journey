@@ -1,0 +1,18 @@
+# IntelliJ IDEA specific files (if ever opened in IntelliJ)
+.idea/
+*.iml
+
+# Build outputs
+out/
+target/
+bin/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Local configuration (don't upload your DB password!)
+db.properties
