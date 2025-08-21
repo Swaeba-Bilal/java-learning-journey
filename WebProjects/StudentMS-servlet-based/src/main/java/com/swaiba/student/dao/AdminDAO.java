@@ -11,7 +11,7 @@ public Admin validateAdmin(String username,String password) {
 		Connection con=DBConnection.getConnection();
 		PreparedStatement pst= con.prepareStatement(sql)){
 		pst.setString(1,username);
-		pst.setString(1, password);
+		pst.setString(2, password);
 		try 
 			(ResultSet rs=pst.executeQuery()){
 			if(rs.next()) {
