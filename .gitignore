@@ -10,11 +10,6 @@
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
 
-# Eclipse files
-*.swp
-.classpath
-.project
-.settings/
 
 # IntelliJ IDEA files
 *.iml
@@ -27,3 +22,5 @@ out/
 # Mac and Windows hidden files
 .DS_Store
 Thumbs.db
+# --- Security (Database config) ---
+src/main/resources/db.properties
