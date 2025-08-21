@@ -1,0 +1,25 @@
+# --- Java Build Artifacts ---
+*.class
+*.log
+
+# --- Sensitive Config Files ---
+src/db.properties
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
+
+# --- IDEs we are NOT using for this project ---
+# IntelliJ IDEA
+*.iml
+.idea/
+out/
+
+# VS Code
+.vscode/
+
+# --- Do NOT ignore Eclipse project files ---
+# Keep these tracked since this is an Eclipse Dynamic Web Project:
+# .classpath
+# .project
+# .settings/
