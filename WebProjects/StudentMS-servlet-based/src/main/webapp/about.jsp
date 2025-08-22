@@ -15,21 +15,21 @@
     <a class="navbar-brand" href="home.jsp">Student MS</a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" href="home.jsp">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="list-students">View Students</a></li>
-        <li class="nav-item"><a class="nav-link" href="add-student.jsp">Add Student</a></li>
-        <li class="nav-item"><a class="nav-link active" href="about.jsp">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/home.jsp">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/list-students">View Students</a></li>
+        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/add-student.jsp">Add Student</a></li>
+        <li class="nav-item"><a class="nav-link active" href="${pageContext.request.contextPath}/about.jsp">About</a></li>
 
         <!-- Show Login if not logged in, Logout if logged in -->
         <c:choose>
           <c:when test="${not empty sessionScope.admin}">
             <li class="nav-item">
-              <a class="nav-link" href="logout">Logout</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
             </li>
           </c:when>
           <c:otherwise>
             <li class="nav-item">
-              <a class="nav-link" href="login.jsp">Login</a>
+              <a class="nav-link" href="${pageContext.request.contextPath}/login.jsp">Login</a>
             </li>
           </c:otherwise>
         </c:choose>
