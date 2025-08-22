@@ -1,5 +1,12 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="jakarta.tags.core" prefix="c" %>
+<%
+    if (session.getAttribute("admin") == null) {
+        response.sendRedirect("home.jsp"); // kick out if not logged in
+        return;
+    }
+%>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,6 +26,11 @@
                 <li class="nav-item"><a class="nav-link active" href="list-students">View Students</a></li>
                 <li class="nav-item"><a class="nav-link" href="add-student.jsp">Add Student</a></li>
                 <li class="nav-item"><a class="nav-link" href="about.jsp">About</a></li>
+                <% if (session.getAttribute("admin") != null) { %>
+                    <li class="nav-item">
+                        <a class="nav-link text-danger" href="logout">Logout</a>
+                    </li>
+                <% } %>
             </ul>
         </div>
     </div>

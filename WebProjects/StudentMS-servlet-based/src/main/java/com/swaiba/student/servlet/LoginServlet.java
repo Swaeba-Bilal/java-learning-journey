@@ -29,7 +29,7 @@ public class LoginServlet extends HttpServlet {
 		if(admin!=null) {
 			HttpSession session=request.getSession();
 			session.setAttribute("admin", admin);
-			response.sendRedirect("admin-dashboard.jsp");
+			response.sendRedirect("home.jsp");
 		}
 		else {
 			request.setAttribute("errorMessage", "Invalid username and password!");
