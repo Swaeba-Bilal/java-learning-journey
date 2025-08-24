@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>Home - Student Management System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 
@@ -47,7 +48,9 @@
     <h1>Welcome to Student Management System</h1>
     <p class="lead">Manage students efficiently with a simple and modern interface.</p>
 </div>
-
+<div class="banner">
+<img src="images/student-banner.png" alt="Student Management System Banner">
+</div>
 <!-- Login Modal -->
 <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">

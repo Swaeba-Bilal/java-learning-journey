@@ -8,6 +8,7 @@
 <meta charset="UTF-8">
 <title>About | StudentMS</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -39,7 +40,7 @@
 </nav>
 
 <!-- page content -->
-<div class="container my-5">
+<div class="container my-5 about-section">
   <h2 class="mb-4">About Student Management System</h2>
   <p class="lead">
     The <strong>Student Management System (Student MS)</strong> is a web application built using

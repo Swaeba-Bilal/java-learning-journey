@@ -13,6 +13,7 @@
 <meta charset="UTF-8">
 <title>Add Student</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -58,10 +59,7 @@ shadow-sm bg-light">
 <a href="${pageContext.request.contextPath}/list-students" class="btn btn-secondary ms-2">Back to Student List</a>
 </form>
 </div>
-<!-- Footer -->
-<footer class="bg-dark text-white text-center py-3 mt-5">
-  <p>&copy; 2025 Student Management System | Developed by Swaeba Bilal</p>
-</footer>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
