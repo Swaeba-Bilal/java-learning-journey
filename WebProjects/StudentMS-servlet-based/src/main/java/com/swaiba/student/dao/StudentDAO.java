@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 public class StudentDAO {
     public void addStudent(Student s) throws SQLException{
-        String query="INSERT INTO students(name,email,dob,gpa) VALUES(?,?,?,?)";
+        String query="INSERT INTO students(name,email,dob,gpa,section,program) VALUES(?,?,?,?,?,?)";
         try
                 (Connection con=DBConnection.getConnection();
             PreparedStatement pst=con.prepareStatement(query);)
@@ -15,6 +15,8 @@ public class StudentDAO {
             pst.setString(2,s.getEmail());
             pst.setDate(3, Date.valueOf(s.getDob()));
             pst.setDouble(4,s.getGpa());
+            pst.setString(5,s.getSection() );
+            pst.setString(6, s.getProgram());
             pst.executeUpdate();
         }
     }
@@ -44,14 +46,16 @@ public class StudentDAO {
         return list;
     }
     public boolean updateStudent(Student s)throws SQLException{
-        String query="UPDATE students SET name=?,email=?,dob=?,gpa=? WHERE id=?";
+        String query="UPDATE students SET name=?,email=?,dob=?,gpa=?,section=?,program=? WHERE id=?";
         try(Connection con=DBConnection.getConnection();
         PreparedStatement pst=con.prepareStatement(query)){
             pst.setString(1,s.getName());
             pst.setString(2,s.getEmail());
             pst.setDate(3,Date.valueOf(s.getDob()));
             pst.setDouble(4,s.getGpa());
-            pst.setInt(5, s.getId());
+            pst.setString(5, s.getSection());
+            pst.setString(6, s.getProgram());
+            pst.setInt(7, s.getId());
             return pst.executeUpdate()>0;
         }
     }
@@ -74,6 +78,8 @@ public class StudentDAO {
             s.setDob(dob.toLocalDate());
         }
         s.setGpa(rs.getDouble("gpa"));
+        s.setSection(rs.getString("section"));
+        s.setProgram(rs.getString("program"));
         return s;
     }
 }
