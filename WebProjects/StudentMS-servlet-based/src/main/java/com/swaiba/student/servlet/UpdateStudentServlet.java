@@ -54,9 +54,11 @@ public class UpdateStudentServlet extends HttpServlet {
 	        String email = request.getParameter("email");
 	        LocalDate dob = LocalDate.parse(request.getParameter("dob"));
 	        double gpa = Double.parseDouble(request.getParameter("gpa"));
+	        String section=request.getParameter("section");
+	        String program=request.getParameter("program");
 	        System.out.println("Updating student with ID = " + id);
 
-	        Student s = new Student(name, email, dob, gpa);
+	        Student s = new Student(name, email, dob, gpa,section,program);
 	        s.setId(id);
 	        System.out.println("Student object before update: " + s);
 
