@@ -49,6 +49,8 @@
                 <th>Email</th>
                 <th>DOB</th>
                 <th>GPA</th>
+                <th>Section</th>
+                <th>Program</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -60,6 +62,8 @@
                     <td>${s.email}</td>
                     <td>${s.dob}</td>
                     <td>${s.gpa}</td>
+                    <td>${s.section}</td>
+                    <td>${s.program}</td>
                     <td>
                         <a class="btn btn-sm btn-primary" 
                            href="${pageContext.request.contextPath}/update-student?id=${s.id}">Edit</a>
