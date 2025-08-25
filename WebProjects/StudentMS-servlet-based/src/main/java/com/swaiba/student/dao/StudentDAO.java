@@ -82,4 +82,34 @@ public class StudentDAO {
         s.setProgram(rs.getString("program"));
         return s;
     }
+    private List<Student> searchStudents(String keyword,String section,String program) throws SQLException{
+    	List<Student> students=new ArrayList<>();
+    	String sql="SELECT * from students WHERE (name LIKE ? OR email LIKE ?)"
+    			+"AND(section =? OR ?='')"
+    			+ "AND(program =? OR ?='')";
+    	try(Connection con=DBConnection.getConnection();
+    			PreparedStatement pst=con.prepareStatement(sql)){
+    		String likeKeyword="%"+keyword+"%";
+    		pst.setString(1,likeKeyword );
+    		pst.setString(2, likeKeyword);
+    		pst.setString(3,section);
+    		pst.setString(4, section);
+    		pst.setString(5, program);
+    		pst.setString(6, program);
+    		ResultSet rs=pst.executeQuery();
+    	while(rs.next()) {
+    		Student s= new Student(
+    				rs.getString("name"),
+    				rs.getString("email"),
+    				rs.getDate("dob").toLocalDate(),
+    		       rs.getDouble("gpa"),
+    		       rs.getString("section"),
+                  rs.getString("program")
+    				);
+    		s.setId(rs.getInt("id"));
+    		students.add(s);
+    	}	
+    	}
+    	return students;
+    } 
 }
