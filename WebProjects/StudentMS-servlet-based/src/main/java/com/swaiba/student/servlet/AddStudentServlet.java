@@ -20,10 +20,12 @@ public class AddStudentServlet extends HttpServlet {
 	String email=request.getParameter("email");
 	String dobStr=request.getParameter("dob");
 	String gpaStr=request.getParameter("gpa");
+	String section=request.getParameter("section");
+	String program=request.getParameter("program");
 	//Convert data types
 	LocalDate dob=LocalDate.parse(dobStr);
 	Double gpa=Double.parseDouble(gpaStr);
-	Student s= new Student(name,email,dob,gpa);
+	Student s= new Student(name,email,dob,gpa,section,program);
 	StudentDAO dao= new StudentDAO();
 	try {
 		dao.addStudent(s);
