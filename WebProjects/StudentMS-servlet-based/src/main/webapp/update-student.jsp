@@ -43,6 +43,14 @@ shadow-sm bg-light">
 <label class="form-label">GPA:</label>
 <input type="number" step="any" name="gpa" value="${student.gpa}" class="form-control" required>
 </div>
+<div class="mb-3">
+<label class="form-label">Section:</label>
+<input type="text" name="section" class="form-control" required>
+</div>
+<div class="mb-3">
+<label class="form-label">Program:</label>
+<input type="text" name="program" class="form-control" required>
+</div>
 <button type="submit" class="btn btn-primary">Update Student</button>
     <a href="${pageContext.request.contextPath}/list-students" class="btn btn-secondary ms-2">Back to Student List</a>
 </form>
