@@ -39,6 +39,28 @@
 
 <!-- Page Content -->
 <div class="container my-5">
+<h2 class="mb-4"> Search Students</h2>
+<form action="list-students" method="get">
+<div class="col-md-4">
+<input type="text" name="keyword" class="form-control" placeholder="Search by name or email"
+value="${ param.keyword}">
+</div>
+<div class="col-md-3">
+<select name="section" class="form-section">
+<option value="">--Select Section--</option>
+<option value="A" ${param.section=='A' ? 'selected' : ''}>A</option>
+<option value="B" ${param.section=='B' ?'selected' : ''}>B</option>
+</select>
+</div>
+<div class="col-md-3">
+<select name="program" class="form-section">
+<option value="">--Select Program--</option>
+<option value="BSCS" ${param.program=='BSCS' ? 'selected' : '' }>BSCS</option>
+<option value="BSSE" ${param.program=='BSSE' ?'selected' : '' }>BSSE</option>
+</select>
+</div>
+<button type="submit">Search</button>
+</form>
     <h2 class="mb-4">All Students</h2>
 
     <table class="table table-striped table-bordered">
@@ -55,6 +77,13 @@
             </tr>
         </thead>
         <tbody>
+        <c:if test="${empty studentList}">
+        <tr>
+            <td colspan="8" class="text-center text-muted">
+                No students found.
+            </td>
+        </tr>
+    </c:if>
             <c:forEach var="s" items="${studentList}">
                 <tr>
                     <td>${s.id}</td>
