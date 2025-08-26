@@ -82,7 +82,7 @@ public class StudentDAO {
         s.setProgram(rs.getString("program"));
         return s;
     }
-    private List<Student> searchStudents(String keyword,String section,String program) throws SQLException{
+    public List<Student> searchStudents(String keyword,String section,String program) throws SQLException{
     	List<Student> students=new ArrayList<>();
     	String sql="SELECT * from students WHERE (name LIKE ? OR email LIKE ?)"
     			+"AND(section =? OR ?='')"
