@@ -33,15 +33,30 @@ public class ListStudentsServlet extends HttpServlet {
 			String keyword=normalize(request.getParameter("keyword"));
 			String section =normalize(request.getParameter("section"));
 			String program= normalize(request.getParameter("program"));
+			// 4. normalize sorting
+            String sortBy = normalize(request.getParameter("sortBy"));
+            if (sortBy.isEmpty()) sortBy = "id";  // default column
+
+            String order = normalize(request.getParameter("order"));
+            if (order.isEmpty()) order = "ASC";   // default order
+
+            // --- Validate inputs (to prevent SQL injection) ---
+            if (!sortBy.matches("id|name|gpa|program|section")) {
+                sortBy = "id";
+            }
+            if (!order.matches("ASC|DESC")) {
+                order = "ASC";
+            }
+
 			
 			if(keyword.isEmpty() && section.isEmpty() && program.isEmpty() ){
 				// no filters → fetch all students paginated
-				students=dao.listStudents(offset, PAGE_SIZE);
+				students=dao.listStudents(offset, PAGE_SIZE,sortBy,order);
 				totalStudents=dao.getTotalStudents();
 			}
 			else {
 				// with filters → search students paginated
-				students=dao.searchStudents(keyword,section,program,offset,PAGE_SIZE);
+				students=dao.searchStudents(keyword,section,program,offset,PAGE_SIZE,sortBy,order);
 				totalStudents = dao.getTotalSearchStudents(keyword, section, program);
 			}
 			// 4. calculate total pages
@@ -52,6 +67,8 @@ public class ListStudentsServlet extends HttpServlet {
 			request.setAttribute("keyword", keyword);
             request.setAttribute("section", section);
             request.setAttribute("program", program);
+            request.setAttribute("sortBy", sortBy);
+            request.setAttribute("order", order);
          // forward to JSP
 			request.getRequestDispatcher("/list-students.jsp").forward(request, response);
 			

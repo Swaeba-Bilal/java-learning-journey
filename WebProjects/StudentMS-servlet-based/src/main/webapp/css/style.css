@@ -73,3 +73,21 @@ footer {
   border-radius: 10px;
   background: #ffffff;
 }
+.search-form {
+    display: flex;
+    flex-wrap: wrap;     /* allows wrapping only on small screens */
+    align-items: center;
+    justify-content: center;
+    gap: 12px;           /* spacing between fields */
+}
+
+.search-form .form-control,
+.search-form .form-select {
+    flex: 0 0 160px;     /* fixed width */
+    max-width: 120px;
+}
+
+.search-form button {
+    flex: 0 0 auto;      /* button keeps natural size */
+    padding: 6px 18px;
+}

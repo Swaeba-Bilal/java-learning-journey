@@ -82,12 +82,13 @@ public class StudentDAO {
         s.setProgram(rs.getString("program"));
         return s;
     }
-    public List<Student> searchStudents(String keyword,String section,String program,int offset, int limit) throws SQLException{
+    public List<Student> searchStudents(String keyword,String section,String program,int offset, int limit,String sortBy, String order) throws SQLException{
     	List<Student> students=new ArrayList<>();
     	String sql="SELECT * from students WHERE (name LIKE ? OR email LIKE ?)"
     			+"AND(section =? OR ?='')"
     			+ "AND(program =? OR ?='')"
-    			+ "LIMIT ? OFFSET ?";
+    			 +"ORDER BY " + sortBy + " " + order
+    			+ " LIMIT ? OFFSET ?";
     	try(Connection con=DBConnection.getConnection();
     			PreparedStatement pst=con.prepareStatement(sql)){
     		String likeKeyword="%"+keyword+"%";
@@ -139,9 +140,10 @@ public class StudentDAO {
         }
         return 0;
     }
-    public List<Student> listStudents(int offset, int limit) throws SQLException{
+    public List<Student> listStudents(int offset, int limit,String sortBy,String order) throws SQLException{
     	List<Student> students = new ArrayList<>();
-    	String sql="SELECT * FROM students LIMIT ? OFFSET ?";
+    	String sql="SELECT * FROM students ORDER BY "+ sortBy+" "
+    			+order+" LIMIT ? OFFSET ?";
     	try(Connection con=DBConnection.getConnection();
     		PreparedStatement pst=con.prepareStatement(sql);
     			){

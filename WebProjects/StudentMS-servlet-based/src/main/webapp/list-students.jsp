@@ -41,35 +41,49 @@
 <div class="container my-5">
 <h2 class="mb-4">Search Students</h2>
 <div class="card p-4 mb-4 shadow-sm">
-    <form action="list-students" method="get" class="row g-3 align-items-center">
+    <form action="list-students" method="get" class="search-form">
         <!-- Keyword -->
-        <div class="col-md-4">
             <input type="text" name="keyword" class="form-control" 
                    placeholder="Search by name or email" value="${param.keyword}">
-        </div>
 
         <!-- Section -->
-        <div class="col-md-3">
+        
             <select name="section" class="form-select">
                 <option value="">--Select Section--</option>
                 <option value="A" ${param.section=='A' ? 'selected' : ''}>A</option>
                 <option value="B" ${param.section=='B' ? 'selected' : ''}>B</option>
             </select>
-        </div>
+        
 
         <!-- Program -->
-        <div class="col-md-3">
+       
             <select name="program" class="form-select">
                 <option value="">--Select Program--</option>
                 <option value="BSCS" ${param.program=='BSCS' ? 'selected' : ''}>BSCS</option>
                 <option value="BSSE" ${param.program=='BSSE' ? 'selected' : ''}>BSSE</option>
             </select>
-        </div>
-
+      
+<!-- Sort By -->
+    
+        <select name="sortBy" class="form-select" onchange="this.form.submit()">
+            <option value="id" ${param.sortBy=='id' ? 'selected' : ''}>ID</option>
+            <option value="name" ${param.sortBy=='name' ? 'selected' : ''}>Name</option>
+            <option value="gpa" ${param.sortBy=='gpa' ? 'selected' : ''}>GPA</option>
+            <option value="program" ${param.sortBy=='program' ? 'selected' : ''}>Program</option>
+            <option value="section" ${param.sortBy=='section' ? 'selected' : ''}>Section</option>
+        </select>
+    
+    <!-- Order -->
+    
+        <select name="order" class="form-select" onchange="this.form.submit()">
+            <option value="ASC" ${param.order=='ASC' ? 'selected' : ''}>Ascending</option>
+            <option value="DESC" ${param.order=='DESC' ? 'selected' : ''}>Descending</option>
+        </select>
+    
         <!-- Button -->
-        <div class="col-md-2">
+        
             <button type="submit" class="btn btn-primary w-100">Search</button>
-        </div>
+      
     </form>
 </div>
 <h2 class="mb-4">Student List</h2>
@@ -145,9 +159,8 @@
                 </ul>
             </nav>
         </c:if>
+      
     </div>
-
-</div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
