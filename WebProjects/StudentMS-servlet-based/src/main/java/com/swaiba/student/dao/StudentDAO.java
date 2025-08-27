@@ -111,5 +111,48 @@ public class StudentDAO {
     	}	
     	}
     	return students;
-    } 
+    }
+    public List<Student> listStudents(int offset, int pageSize) throws SQLException{
+    	List<Student> students = new ArrayList<>();
+    	String sql="SELECT * FROM students LIMIT ? OFFSET ?";
+    	try(Connection con=DBConnection.getConnection();
+    		PreparedStatement pst=con.prepareStatement(sql);
+    			){
+    		pst.setInt(1, pageSize);
+    		pst.setInt(2, offset);
+    		ResultSet rs=pst.executeQuery();
+    		while(rs.next()) {
+    			Student s = new Student(
+    					rs.getString("name"),
+        				rs.getString("email"),
+        				rs.getDate("dob").toLocalDate(),
+        		       rs.getDouble("gpa"),
+        		       rs.getString("section"),
+                      rs.getString("program")
+    					);
+    			s.setId(rs.getInt("id"));
+        		students.add(s);
+    		}
+    		
+    	}
+    	catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return students;
+    }
+    public int getTotalStudents() {
+    	String sql="SELECT COUNT(*) FROM students";
+    	int count=0;
+    	try(Connection con=DBConnection.getConnection();
+    			Statement st=con.createStatement();
+    			ResultSet rs=st.executeQuery(sql)){
+    		if(rs.next()) {
+    			count=rs.getInt(1);		
+    		}
+    	}
+    	catch(SQLException e) {
+    		e.printStackTrace();
+    	}
+    	return count;
+    }
 }
