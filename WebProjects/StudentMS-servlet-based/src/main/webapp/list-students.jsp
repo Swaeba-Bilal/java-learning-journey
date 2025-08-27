@@ -107,6 +107,45 @@
         </table>
     </div>
 </div>
+<!-- Pagination Controls -->
+        <c:if test="${totalPages > 1}">
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center mt-3">
+
+                    <!-- Previous -->
+                    <c:if test="${currentPage > 1}">
+                        <li class="page-item">
+                            <a class="page-link" 
+                               href="list-students?page=${currentPage-1}&keyword=${param.keyword}&section=${param.section}&program=${param.program}">
+                               Previous
+                            </a>
+                        </li>
+                    </c:if>
+
+                    <!-- Page Numbers -->
+                    <c:forEach begin="1" end="${totalPages}" var="i">
+                        <li class="page-item ${i==currentPage ? 'active' : ''}">
+                            <a class="page-link" 
+                               href="list-students?page=${i}&keyword=${param.keyword}&section=${param.section}&program=${param.program}">
+                               ${i}
+                            </a>
+                        </li>
+                    </c:forEach>
+
+                    <!-- Next -->
+                    <c:if test="${currentPage < totalPages}">
+                        <li class="page-item">
+                            <a class="page-link" 
+                               href="list-students?page=${currentPage+1}&keyword=${param.keyword}&section=${param.section}&program=${param.program}">
+                               Next
+                            </a>
+                        </li>
+                    </c:if>
+
+                </ul>
+            </nav>
+        </c:if>
+    </div>
 
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
