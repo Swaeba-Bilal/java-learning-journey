@@ -82,11 +82,12 @@ public class StudentDAO {
         s.setProgram(rs.getString("program"));
         return s;
     }
-    public List<Student> searchStudents(String keyword,String section,String program) throws SQLException{
+    public List<Student> searchStudents(String keyword,String section,String program,int offset, int limit) throws SQLException{
     	List<Student> students=new ArrayList<>();
     	String sql="SELECT * from students WHERE (name LIKE ? OR email LIKE ?)"
     			+"AND(section =? OR ?='')"
-    			+ "AND(program =? OR ?='')";
+    			+ "AND(program =? OR ?='')"
+    			+ "LIMIT ? OFFSET ?";
     	try(Connection con=DBConnection.getConnection();
     			PreparedStatement pst=con.prepareStatement(sql)){
     		String likeKeyword="%"+keyword+"%";
@@ -96,6 +97,8 @@ public class StudentDAO {
     		pst.setString(4, section);
     		pst.setString(5, program);
     		pst.setString(6, program);
+    		pst.setInt(7, limit);
+            pst.setInt(8, offset);
     		ResultSet rs=pst.executeQuery();
     	while(rs.next()) {
     		Student s= new Student(
@@ -112,13 +115,37 @@ public class StudentDAO {
     	}
     	return students;
     }
-    public List<Student> listStudents(int offset, int pageSize) throws SQLException{
+    public int getTotalSearchStudents(String keyword, String section, String program) throws SQLException {
+        String sql = "SELECT COUNT(*) FROM students " +
+                     "WHERE (name LIKE ? OR email LIKE ?) " +
+                     "AND (section = ? OR ? = '') " +
+                     "AND (program = ? OR ? = '')";
+
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement pst = con.prepareStatement(sql)) {
+            
+            String likeKeyword = "%" + keyword + "%";
+            pst.setString(1, likeKeyword);
+            pst.setString(2, likeKeyword);
+            pst.setString(3, section);
+            pst.setString(4, section);
+            pst.setString(5, program);
+            pst.setString(6, program);
+
+            ResultSet rs = pst.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        }
+        return 0;
+    }
+    public List<Student> listStudents(int offset, int limit) throws SQLException{
     	List<Student> students = new ArrayList<>();
     	String sql="SELECT * FROM students LIMIT ? OFFSET ?";
     	try(Connection con=DBConnection.getConnection();
     		PreparedStatement pst=con.prepareStatement(sql);
     			){
-    		pst.setInt(1, pageSize);
+    		pst.setInt(1, limit);
     		pst.setInt(2, offset);
     		ResultSet rs=pst.executeQuery();
     		while(rs.next()) {

@@ -15,20 +15,44 @@ import com.swaiba.student.model.Student;
 @WebServlet("/list-students")
 public class ListStudentsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static final int PAGE_SIZE=10;
   private StudentDAO dao=new StudentDAO();
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		try {
-			List<Student> students=null;
+			// 1. figure out which page we are on (default 1)
+			int page=1;
+			String pageParam=request.getParameter("page");
+			if(pageParam!=null && !pageParam.isEmpty()) {
+				page=Integer.parseInt(pageParam);
+			}
+			// 2. calculate offset
+			int offset=(page-1)*PAGE_SIZE;
+			// 3. normalize filters
+			List<Student> students;
+			int totalStudents;
 			String keyword=normalize(request.getParameter("keyword"));
 			String section =normalize(request.getParameter("section"));
 			String program= normalize(request.getParameter("program"));
+			
 			if(keyword.isEmpty() && section.isEmpty() && program.isEmpty() ){
-				students=dao.getAllStudent();
+				// no filters → fetch all students paginated
+				students=dao.listStudents(offset, PAGE_SIZE);
+				totalStudents=dao.getTotalStudents();
 			}
 			else {
-				students=dao.searchStudents(keyword,section,program);
+				// with filters → search students paginated
+				students=dao.searchStudents(keyword,section,program,offset,PAGE_SIZE);
+				totalStudents = dao.getTotalSearchStudents(keyword, section, program);
 			}
+			// 4. calculate total pages
+            int totalPages = (int) Math.ceil((double) totalStudents / PAGE_SIZE);
 			request.setAttribute("studentList", students);
+			request.setAttribute("currentPage", page);
+			request.setAttribute("totalPages",totalPages);
+			request.setAttribute("keyword", keyword);
+            request.setAttribute("section", section);
+            request.setAttribute("program", program);
+         // forward to JSP
 			request.getRequestDispatcher("/list-students.jsp").forward(request, response);
 			
 		}
