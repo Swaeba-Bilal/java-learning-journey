@@ -39,71 +39,75 @@
 
 <!-- Page Content -->
 <div class="container my-5">
-<h2 class="mb-4"> Search Students</h2>
-<form action="list-students" method="get">
-<div class="col-md-4">
-<input type="text" name="keyword" class="form-control" placeholder="Search by name or email"
-value="${ param.keyword}">
-</div>
-<div class="col-md-3">
-<select name="section" class="form-section">
-<option value="">--Select Section--</option>
-<option value="A" ${param.section=='A' ? 'selected' : ''}>A</option>
-<option value="B" ${param.section=='B' ?'selected' : ''}>B</option>
-</select>
-</div>
-<div class="col-md-3">
-<select name="program" class="form-section">
-<option value="">--Select Program--</option>
-<option value="BSCS" ${param.program=='BSCS' ? 'selected' : '' }>BSCS</option>
-<option value="BSSE" ${param.program=='BSSE' ?'selected' : '' }>BSSE</option>
-</select>
-</div>
-<button type="submit">Search</button>
-</form>
-    <h2 class="mb-4">All Students</h2>
+<h2 class="mb-4">Search Students</h2>
+<div class="card p-4 mb-4 shadow-sm">
+    <form action="list-students" method="get" class="row g-3 align-items-center">
+        <!-- Keyword -->
+        <div class="col-md-4">
+            <input type="text" name="keyword" class="form-control" 
+                   placeholder="Search by name or email" value="${param.keyword}">
+        </div>
 
-    <table class="table table-striped table-bordered">
-        <thead class="table-dark">
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>DOB</th>
-                <th>GPA</th>
-                <th>Section</th>
-                <th>Program</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        <c:if test="${empty studentList}">
-        <tr>
-            <td colspan="8" class="text-center text-muted">
-                No students found.
-            </td>
-        </tr>
-    </c:if>
-            <c:forEach var="s" items="${studentList}">
+        <!-- Section -->
+        <div class="col-md-3">
+            <select name="section" class="form-select">
+                <option value="">--Select Section--</option>
+                <option value="A" ${param.section=='A' ? 'selected' : ''}>A</option>
+                <option value="B" ${param.section=='B' ? 'selected' : ''}>B</option>
+            </select>
+        </div>
+
+        <!-- Program -->
+        <div class="col-md-3">
+            <select name="program" class="form-select">
+                <option value="">--Select Program--</option>
+                <option value="BSCS" ${param.program=='BSCS' ? 'selected' : ''}>BSCS</option>
+                <option value="BSSE" ${param.program=='BSSE' ? 'selected' : ''}>BSSE</option>
+            </select>
+        </div>
+
+        <!-- Button -->
+        <div class="col-md-2">
+            <button type="submit" class="btn btn-primary w-100">Search</button>
+        </div>
+    </form>
+</div>
+<h2 class="mb-4">Student List</h2>
+<div class="card shadow-sm p-3">
+    <div class="table-responsive">
+        <table class="table table-striped table-hover table-bordered align-middle">
+            <thead class="table-dark">
                 <tr>
-                    <td>${s.id}</td>
-                    <td>${s.name}</td>
-                    <td>${s.email}</td>
-                    <td>${s.dob}</td>
-                    <td>${s.gpa}</td>
-                    <td>${s.section}</td>
-                    <td>${s.program}</td>
-                    <td>
-                        <a class="btn btn-sm btn-primary" 
-                           href="${pageContext.request.contextPath}/update-student?id=${s.id}">Edit</a>
-                        <a class="btn btn-sm btn-danger" 
-                           href="${pageContext.request.contextPath}/delete-student?id=${s.id}" 
-                           onclick="return confirm('Are you sure you want to delete this student?');">Delete</a>
-                    </td>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Program</th>
+                    <th>Section</th>
+                    <th>Actions</th>
                 </tr>
-            </c:forEach>
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                <c:forEach var="student" items="${studentList}">
+                    <tr>
+                        <td>${student.id}</td>
+                        <td>${student.name}</td>
+                        <td>${student.email}</td>
+                        <td>${student.program}</td>
+                        <td>${student.section}</td>
+                        <td class="text-center">
+                            <a href="update-student?id=${student.id}" class="btn btn-sm btn-warning me-1">Edit</a>
+                            <a href="delete-student?id=${student.id}" class="btn btn-sm btn-danger"
+                               onclick="return confirm('Are you sure you want to delete this student?');">
+                               Delete
+                            </a>
+                        </td>
+                    </tr>
+                </c:forEach>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>

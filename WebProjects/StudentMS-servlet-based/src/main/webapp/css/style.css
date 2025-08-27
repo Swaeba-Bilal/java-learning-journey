@@ -69,3 +69,7 @@ footer {
   text-align: center;
   padding: 15px;
 }
+.card {
+  border-radius: 10px;
+  background: #ffffff;
+}
