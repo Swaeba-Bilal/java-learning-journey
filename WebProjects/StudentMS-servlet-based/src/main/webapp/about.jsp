@@ -9,11 +9,13 @@
 <title>About | StudentMS</title>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style.css">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <a class="navbar-brand" href="home.jsp">Student MS</a>
+    <a class="navbar-brand" href="home.jsp">
+    <i class="fas fa-graduation-cap"></i>Student MS</a>
     <div class="collapse navbar-collapse">
       <ul class="navbar-nav ms-auto">
         <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/home.jsp">Home</a></li>
@@ -24,9 +26,12 @@
         <!-- Show Login if not logged in, Logout if logged in -->
         <c:choose>
           <c:when test="${not empty sessionScope.admin}">
-            <li class="nav-item">
-              <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
-            </li>
+           <li class="nav-item">
+                        <a class="nav-link text-danger" href="${pageContext.request.contextPath}/logout">
+   <i class="fas fa-sign-out-alt"></i> Logout
+</a>
+                        
+                    </li>
           </c:when>
           <c:otherwise>
             <li class="nav-item">
