@@ -13,7 +13,11 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 /**
  * This servlet handles user signup by validating the username
- * and insertinga new user into the database if available.
+ * and inserting a new user into the database if available.
+ * <p>
+ * On successful signup, the user is redirected to {@code login.jsp}.
+ *  If the username already exists, an error message is displayed.
+ * </p>
  * @author Swaeba
  * @version 1.0
  */
@@ -22,9 +26,14 @@ public class SignupServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 /**
- * Processes post request for user signup
- * @param request the HttpServletRequest Object containing form data 
- * @param response the HttpServletResponse Object used to send output
+ * Processes POST requests for user signup
+ * <p>
+ * This method checks if the username already exists in the database.
+ * If it is available, the new user is inserted and redirected to the login page.
+ * Otherwise, an error message is returned to the client.
+ * </p>
+ * @param request the {@link HttpServletRequest} containing form data 
+ * @param response the{@link HttpServletResponse} used to send output
  * @throws ServletException if a servlet-specific error occured
  * @throws IOException if an input or output error occcurs
  */
