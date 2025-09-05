@@ -9,7 +9,12 @@ import java.sql.Connection;
 import com.pet.petadoption.db.DBConnection;
 @WebServlet("/dbtest")
 public class DBTestServlet extends HttpServlet {
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         try (Connection conn = DBConnection.getConnection()) {
             if (conn != null && !conn.isClosed()) {
                 resp.getWriter().write("✅ Database connection successful!");
