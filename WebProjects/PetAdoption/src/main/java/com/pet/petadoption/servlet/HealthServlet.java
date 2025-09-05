@@ -1,4 +1,4 @@
-package servlet;
+package com.pet.petadoption.servlet;
 
 import java.io.IOException;
 import jakarta.servlet.annotation.WebServlet;
@@ -8,7 +8,12 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/health")
 public class HealthServlet extends HttpServlet {
-    @Override
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
         resp.setContentType("text/plain");
         resp.getWriter().write("OK - Pet Adoption Portal");

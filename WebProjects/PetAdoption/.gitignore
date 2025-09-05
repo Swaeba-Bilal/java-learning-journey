@@ -1,6 +1,8 @@
 # --- OS Specific ---
 .DS_Store
 Thumbs.db
+# --- Sensitive Config Files ---
+src/db.properties
 
 # --- IDEs we are NOT using for this project ---
 # IntelliJ IDEA
