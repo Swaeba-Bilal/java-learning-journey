@@ -54,7 +54,7 @@ static {
 /**Return a new connection each time
  * 
  * @return a new {@Link Connection} object
- * @throws SQLException if a database access error occurs
+ * @throws SQLException if a database access error occurs 
  */
 public static Connection getConnection() throws SQLException {
 	return DriverManager.getConnection(url,user,password);
