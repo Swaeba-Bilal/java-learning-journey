@@ -13,6 +13,11 @@ private int id;
 private String username;
 /** role of the student*/
 private String role;
+public User(int id, String username, String role) {
+    this.id = id;
+    this.username = username;
+    this.role = role;
+}
 /**  Return the id of the user
  * 
  * @return the unique id of the user
