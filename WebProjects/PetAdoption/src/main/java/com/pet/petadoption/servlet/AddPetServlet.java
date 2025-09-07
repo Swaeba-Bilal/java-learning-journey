@@ -6,36 +6,38 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.sql.SQLException;
+
+import com.pet.petadoption.dao.DAOPet;
+import com.pet.petadoption.model.Pet;
 
 /**
- * Servlet implementation class AddPetServlet
+ * Servlet to handle adding new pets to the adoption system.
  */
-@WebServlet("/AddPetServlet")
+@WebServlet("/add-pet")
 public class AddPetServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public AddPetServlet() {
-        super();
-        // TODO Auto-generated constructor stub
+    private static final long serialVersionUID = 1L;
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+            throws ServletException, IOException {
+
+        String name = request.getParameter("name");
+        String type = request.getParameter("type");
+        String breed = request.getParameter("breed");
+        int age = Integer.parseInt(request.getParameter("age"));
+        String description = request.getParameter("description");
+        String status = request.getParameter("status");
+        String photo_url = request.getParameter("photo_url");
+
+        Pet p = new Pet(name, type, breed, age, description, status, photo_url);
+        DAOPet dao = new DAOPet();
+
+        try {
+            dao.addPet(p);
+            response.sendRedirect(request.getContextPath() + "/list-pets");
+        } catch (SQLException e) {
+            throw new ServletException("Error adding Pet", e);
+        }
     }
-
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
