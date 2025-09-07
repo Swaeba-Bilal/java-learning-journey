@@ -33,6 +33,17 @@ private String photo_url;
 /** Timestamp when the pet entry was created. */
 private LocalDateTime createdAt;
 public Pet() {}
+//Constructor for inserting new Pet (no id, createdAt)
+public Pet(String name, String type, String breed, int age,
+        String description, String status, String photo_url) {
+ this.name = name;
+ this.type = type;
+ this.breed = breed;
+ this.age = age;
+ this.description = description;
+ this.status = status;
+ this.photo_url = photo_url;
+}
 public Pet(int id, String name, String type, String breed,int age,String description,
 		String status,String photo_url,LocalDateTime createdAt) {
 	this.id=id;
