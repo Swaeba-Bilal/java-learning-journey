@@ -30,24 +30,23 @@ public class DAOPet {
      * @param p the {@link Pet} object containing pet details
      * @throws SQLException if a database access error occurs
      */
-    public void addPet(Pet p) throws SQLException {
-        String query = "INSERT INTO pets(name, type, breed, age, description, status, photo_url, created_at) "
-                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
-        try (Connection con = DBConnection.getConnection();
-             PreparedStatement pst = con.prepareStatement(query)) {
+	public void addPet(Pet p) throws SQLException {
+	    String query = "INSERT INTO pets(name, type, breed, age, description, status, photo_url) "
+	                 + "VALUES (?, ?, ?, ?, ?, ?, ?)";
+	    try (Connection con = DBConnection.getConnection();
+	         PreparedStatement pst = con.prepareStatement(query)) {
 
-            pst.setString(1, p.getName());
-            pst.setString(2, p.getType());
-            pst.setString(3, p.getBreed());
-            pst.setInt(4, p.getAge());
-            pst.setString(5, p.getDescription());
-            pst.setString(6, p.getStatus());
-            pst.setString(7, p.getPhoto_url());
-            pst.setTimestamp(8, java.sql.Timestamp.valueOf(p.getCreatedAt()));
+	        pst.setString(1, p.getName());
+	        pst.setString(2, p.getType());
+	        pst.setString(3, p.getBreed());
+	        pst.setInt(4, p.getAge());
+	        pst.setString(5, p.getDescription());
+	        pst.setString(6, p.getStatus());
+	        pst.setString(7, p.getPhoto_url());
 
-            pst.executeUpdate();
-        }
-    }
+	        pst.executeUpdate();
+	    }
+	}
 
     /**
      * Retrieves all pets from the database.
