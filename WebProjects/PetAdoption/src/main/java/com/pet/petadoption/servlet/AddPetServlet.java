@@ -27,7 +27,7 @@ public class AddPetServlet extends HttpServlet {
         String breed = request.getParameter("breed");
         int age = Integer.parseInt(request.getParameter("age"));
         String description = request.getParameter("description");
-        String status = request.getParameter("status");
+        String status = "available";
         String photo_url = request.getParameter("photo_url");
 
         Pet p = new Pet(name, type, breed, age, description, status, photo_url);
