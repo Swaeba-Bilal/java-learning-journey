@@ -29,7 +29,8 @@
 <td>${pet.age}</td>
 <td>${pet.description}</td>
 <td>${pet.status}</td>
-<td>${pet.photo}</td>
+<td><img src="${pet.photo_url}" alt="Pet Photo" width="120"></td>
+
 </tr>
 </c:forEach>
 </table>
