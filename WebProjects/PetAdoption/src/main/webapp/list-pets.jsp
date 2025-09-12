@@ -29,8 +29,16 @@
 <td>${pet.age}</td>
 <td>${pet.description}</td>
 <td>${pet.status}</td>
-<td><img src="${pet.photo_url}" alt="Pet Photo" width="120"></td>
-
+<td>
+        <c:choose>
+            <c:when test="${not empty pet.photo_url}">
+                <img src="${pet.photo_url}" alt="${pet.name}" width="120">
+            </c:when>
+            <c:otherwise>
+                No photo
+            </c:otherwise>
+        </c:choose>
+    </td>
 </tr>
 </c:forEach>
 </table>
