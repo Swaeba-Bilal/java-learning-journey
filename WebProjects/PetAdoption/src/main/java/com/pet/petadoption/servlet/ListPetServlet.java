@@ -29,6 +29,11 @@ List<Pet> pets;
 try {
 	pets=dao.listAllPets();
 	request.setAttribute("petslist", pets);
+	System.out.println("Pets fetched: " + pets.size());
+	for (Pet pet : pets) {
+	    System.out.println(pet.getName() + " - " + pet.getType());
+	}
+
 	request.getRequestDispatcher("/list-pets.jsp").forward(request, response);
 } catch (SQLException e) {
 	// TODO Auto-generated catch block
