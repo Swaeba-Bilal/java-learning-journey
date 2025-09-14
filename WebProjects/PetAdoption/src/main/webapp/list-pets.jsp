@@ -39,6 +39,10 @@
             </c:otherwise>
         </c:choose>
     </td>
+    <td>
+    <a href="update-pet?id=${pet.id}">Edit
+    </a>
+    </td>
 </tr>
 </c:forEach>
 </table>
