@@ -68,6 +68,19 @@ public class DAOPet {
         }
         return list;
     }
+    public Pet getPetById(int id) throws SQLException {
+    	String query="SELECT * FROM PET WHERE id =?";
+    	try(Connection con=DBConnection.getConnection();
+    			PreparedStatement pst=con.prepareStatement(query)){
+    		pst.setInt(1, id);
+    		try(ResultSet rs= pst.executeQuery()){
+    			if(rs.next()) {
+    				return mapResultToPet(rs);
+    			}
+    		}
+    	}
+    	return null;
+    }
 
     /**
      * Maps a {@link ResultSet} row into a {@link Pet} object.
