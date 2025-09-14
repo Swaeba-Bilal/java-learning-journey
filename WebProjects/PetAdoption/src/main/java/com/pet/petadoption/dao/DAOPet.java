@@ -81,6 +81,13 @@ public class DAOPet {
     	}
     	return null;
     }
+    public Pet UpdatePet(Pet p) throws SQLException{
+    	String query="Update pet WHERE name=?,type=?breed=?age=?,description=?,status=?,photo_url=?";
+    	try(Connection con = DBConnection.getConnection();
+	         PreparedStatement pst = con.prepareStatement(query)){
+    		pst.setString(1, query);r
+    	}
+    }
 
     /**
      * Maps a {@link ResultSet} row into a {@link Pet} object.
