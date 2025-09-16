@@ -63,10 +63,23 @@ DAOPet dao=new DAOPet();
 			String description=request.getParameter("description");
 			String status=request.getParameter("status");
 			String photo_url=request.getParameter("photo_url");
-			System.out.println("Updating student with ID = " + id);
+			System.out.println("Updating pet with ID = " + id);
 			Pet p =new Pet( name,  type,  breed, age,
         description,  status,  photo_url);
 			p.setId(id);
+			System.out.println("Pet object before update: " + p);
+			boolean updated= dao.updatePet(p);
+			if(updated) {
+				response.sendRedirect(request.getContextPath()+"/list-pets");
+			}
+			else {
+				response.getWriter().println("Update failed!");
+			}
+			
+			
+		}
+		catch(Exception e ) {
+			throw new ServletException(e);
 		}
 	}
 
