@@ -81,13 +81,24 @@ public class DAOPet {
     	}
     	return null;
     }
-    public Pet UpdatePet(Pet p) throws SQLException{
-    	String query="Update pet WHERE name=?,type=?breed=?age=?,description=?,status=?,photo_url=?";
-    	try(Connection con = DBConnection.getConnection();
-	         PreparedStatement pst = con.prepareStatement(query)){
-    		pst.setString(1, query);r
-    	}
+    public boolean updatePet(Pet p) throws SQLException {
+        String query = "UPDATE pets SET name=?, type=?, breed=?, age=?, description=?, status=?, photo_url=? WHERE id=?";
+        try (Connection con = DBConnection.getConnection();
+             PreparedStatement pst = con.prepareStatement(query)) {
+
+            pst.setString(1, p.getName());
+            pst.setString(2, p.getType());
+            pst.setString(3, p.getBreed());
+            pst.setInt(4, p.getAge());
+            pst.setString(5, p.getDescription());
+            pst.setString(6, p.getStatus());
+            pst.setString(7, p.getPhoto_url());
+            pst.setInt(8, p.getId());
+
+            return pst.executeUpdate() > 0;
+        }
     }
+
 
     /**
      * Maps a {@link ResultSet} row into a {@link Pet} object.
